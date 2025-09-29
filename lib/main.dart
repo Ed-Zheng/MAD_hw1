@@ -28,6 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String displayText = "";
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,25 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+
+          Container(
+            margin: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(16.0),
+            alignment: Alignment.centerRight,
+            width: double.infinity,
+            height: 100,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 4.0, // thick border
+              ),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Text(
+              displayText,
+              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+          ),
           
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: [   
               ElevatedButton(onPressed: () {}, child: const Text("4")),
               ElevatedButton(onPressed: () {}, child: const Text("5")),
               ElevatedButton(onPressed: () {}, child: const Text("6")),
