@@ -37,7 +37,50 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
 
-      body: Center(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(onPressed: () {}, child: const Text("0")),
+              ElevatedButton(onPressed: () {}, child: const Text("1")),
+              ElevatedButton(onPressed: () {}, child: const Text("2")),
+              ElevatedButton(onPressed: () {}, child: const Text("3")),
+            ],
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(onPressed: () {}, child: const Text("4")),
+              ElevatedButton(onPressed: () {}, child: const Text("5")),
+              ElevatedButton(onPressed: () {}, child: const Text("6")),
+              ElevatedButton(onPressed: () {}, child: const Text("7")),
+            ],
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(onPressed: () {}, child: const Text("8")),
+              ElevatedButton(onPressed: () {}, child: const Text("9")),
+            ],
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(onPressed: () {}, child: const Text("+")),
+              ElevatedButton(onPressed: () {}, child: const Text("-")),
+              ElevatedButton(onPressed: () {}, child: const Text("*")),
+              ElevatedButton(onPressed: () {}, child: const Text("/")),
+              ElevatedButton(onPressed: () {}, child: const Text("Clear")),
+            ],
+          ),
+
+        ],
 
       ),
     );
