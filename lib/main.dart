@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -64,163 +65,242 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
               
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "0";
-                  });
-                },
-                child: const Text("0"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "0";
+                          });
+                        },
+                        child: const Text("0"),
+                      ),
+
+                      SizedBox(
+                        height: 8.0,
+                        width: 8.0,
+                      ),
+              
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "1";
+                          });
+                        },
+                        child: const Text("1"),
+                      ),
+
+                      SizedBox(
+                        height: 8.0,
+                        width: 8.0,
+                      ),
+                      
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "2";
+                          });
+                        },
+                        child: const Text("2"),
+                      ),
+
+                      SizedBox(
+                        height: 8.0,
+                        width: 8.0,
+                      ),
+              
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "3";
+                          });
+                        },
+                        child: const Text("3"),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 8.0,),
+              
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [   
+              
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "4";
+                          });
+                        },
+                        child: const Text("4"),
+                      ),
+
+                      SizedBox(
+                        height: 8.0,
+                        width: 8.0,
+                      ),
+              
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "5";
+                          });
+                        },
+                        child: const Text("5"),
+                      ),
+
+                      SizedBox(
+                        height: 8.0,
+                        width: 8.0,
+                      ),
+                      
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "6";
+                          });
+                        },
+                        child: const Text("6"),
+                      ),
+
+                      SizedBox(
+                        height: 8.0,
+                        width: 8.0,
+                      ),
+              
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "7";
+                          });
+                        },
+                        child: const Text("7"),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 8.0,),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+              
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "8";
+                          });
+                        },
+                        child: const Text("8"),
+                      ),
+
+                      SizedBox(
+                        height: 8.0,
+                        width: 8.0,
+                      ),
+              
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            displayText += "9";
+                          });
+                        },
+                        child: const Text("9"),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 8.0,),
+              
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        displayText = "";
+                      });
+                    },
+                    child: const Text("Clear"),
+                  ),
+                ],
               ),
 
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "1";
-                  });
-                },
-                child: const Text("1"),
-              ),              
-              
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "2";
-                  });
-                },
-                child: const Text("2"),
-              ),              
+              SizedBox(width: 18.0),
 
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "3";
-                  });
-                },
-                child: const Text("3"),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        displayText += "+";
+                      });
+                    },
+                    child: const Text("+"),
+                  ),
+
+                  SizedBox(height: 5.0,),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        displayText += "-";
+                      });
+                    },
+                    child: const Text("-"),
+                  ),            
+
+                  SizedBox(height: 5.0,),  
+              
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        displayText += "*";
+                      });
+                    },
+                    child: const Text("*"),
+                  ),
+
+                  SizedBox(height: 5.0,),     
+
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        displayText += "/";
+                      });
+                    },
+                    child: const Text("/"),
+                  ),
+
+                  SizedBox(height: 5.0,),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        try {
+                          GrammarParser p = GrammarParser();
+                          Expression exp = p.parse(displayText);
+                          double eval = exp.evaluate(EvaluationType.REAL, ContextModel());
+                          displayText = eval.toString();
+                        } catch (e) {
+                          displayText = "Error";
+                        }
+                      });
+                    },  
+                    child: const Text("="),
+                  ),
+                ],
               ),
             ],
           ),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [   
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "4";
-                  });
-                },
-                child: const Text("4"),
-              ),
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "5";
-                  });
-                },
-                child: const Text("5"),
-              ),              
-              
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "6";
-                  });
-                },
-                child: const Text("6"),
-              ),              
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "7";
-                  });
-                },
-                child: const Text("7"),
-              ),
-            ],
-          ),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "8";
-                  });
-                },
-                child: const Text("8"),
-              ),
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "9";
-                  });
-                },
-                child: const Text("9"),
-              ),              
-            ],
-          ),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "+";
-                  });
-                },
-                child: const Text("+"),
-              ),
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "-";
-                  });
-                },
-                child: const Text("-"),
-              ),              
-              
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "*";
-                  });
-                },
-                child: const Text("*"),
-              ),              
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText += "/";
-                  });
-                },
-                child: const Text("/"),
-              ),
-            ],
-          ),
-
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                displayText = "";
-              });
-            },
-            child: const Text("Clear"),
-          ),
-        ],
-      ),
+        ]
+      )
     );
   }
 }
