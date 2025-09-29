@@ -208,16 +208,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text("/"),
               ),
-
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    displayText = "";
-                  });
-                },
-                child: const Text("Clear"),
-              ),
             ],
+          ),
+
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                displayText = "";
+              });
+            },
+            child: const Text("Clear"),
           ),
         ],
       ),
